@@ -43,9 +43,6 @@ class Trick < Formula
       export PATH=#{opt_bin}:$PATH
     EOS
     chmod 0755, share/"trick_env.sh"
-
-    # Optional: wrap binaries to set TRICK_HOME automatically
-    bin.env_script_all_files(libexec/"bin", TRICK_HOME: opt_prefix)
   end
 
   def caveats
