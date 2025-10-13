@@ -14,7 +14,6 @@ class Trick < Formula
   depends_on "hdf5" => :recommended
   depends_on "gsl" => :recommended
   depends_on "googletest" => :test
-  depends_on "xquartz"
   depends_on "openmotif" => :recommended
 
   uses_from_macos "gcc"
