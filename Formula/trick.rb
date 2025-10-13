@@ -13,7 +13,7 @@ class Trick < Formula
   depends_on "java"
   depends_on :macos
   depends_on "perl"
-  depends_on "python@3.13"
+  depends_on "python3"
   depends_on "udunits"
   depends_on "gsl" => :recommended
   depends_on "hdf5" => :recommended
