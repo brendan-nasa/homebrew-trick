@@ -9,6 +9,9 @@ class Trick < Formula
   depends_on "maven" => :build
   depends_on "swig" => :build
 
+  # macOS requirement
+  depends_on :macos
+
   # Test dependency
   depends_on "googletest" => :test
 
@@ -23,8 +26,6 @@ class Trick < Formula
   depends_on "hdf5" => :recommended
   depends_on "openmotif" => :recommended
 
-  # macOS requirement
-  depends_on :macos
 
   def install
     # Set build environment
