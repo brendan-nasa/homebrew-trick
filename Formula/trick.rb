@@ -1,26 +1,22 @@
 class Trick < Formula
-  desc "Trick Simulation Environment"
+  desc "A powerful simulation development framework"
   homepage "https://nasa.github.io/trick"
-  version "latest"
   license "NASA-1.3"
   head "https://github.com/nasa/trick.git", branch: "master"
 
+  depends_on :macos
+
   depends_on "maven" => :build
   depends_on "swig" => :build
-  depends_on "python@3.13"
-  depends_on "perl"
   depends_on "java"
+  depends_on "perl"
+  depends_on "python@3.13"
   depends_on "udunits"
-  depends_on "hdf5" => :recommended
-  depends_on "gsl" => :recommended
   depends_on "googletest" => :test
+  depends_on "gsl" => :recommended
+  depends_on "hdf5" => :recommended
   depends_on "openmotif" => :recommended
   depends_on "llvm" => :build
-
-  uses_from_macos "gcc"
-  uses_from_macos "clang"
-  uses_from_macos "g++"
-  uses_from_macos "clang++"
 
   def install
     # Set environment variables for build
@@ -30,7 +26,7 @@ class Trick < Formula
     system "./configure", "--prefix=#{prefix}"
 
     # Build Trick
-    system "make"
+    system "make", "-j$(sysctl -n hw.ncpu)"
 
     # Install to Homebrew prefix
     system "make", "install"
@@ -72,7 +68,7 @@ class Trick < Formula
 
   test do
     # Test that trick-CP binary exists and runs
-    assert_predicate bin/"trick-CP", :exist?
-    system "#{bin}/trick-CP", "--help"
+    assert_path_exists bin/trick-CP
+    system "bin/trick-CP", "--help"
   end
 end
