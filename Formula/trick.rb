@@ -1,5 +1,5 @@
 class Trick < Formula
-  desc "A powerful simulation development framework"
+  desc "Powerful simulation development framework"
   homepage "https://nasa.github.io/trick"
   license "NASA-1.3"
   head "https://github.com/nasa/trick.git", branch: "master"
@@ -67,7 +67,7 @@ class Trick < Formula
 
   test do
     # Test that trick-CP binary exists and runs
-    assert_path_exists bin/trick-CP
+    assert_path_exists bin/"trick-CP"
     system "bin/trick-CP", "--help"
   end
 end
