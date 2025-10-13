@@ -4,28 +4,18 @@ class Trick < Formula
   license "NASA-1.3"
   head "https://github.com/nasa/trick.git", branch: "master"
 
-  # Build dependencies
   depends_on "llvm" => :build
   depends_on "maven" => :build
   depends_on "swig" => :build
-
-  # macOS requirement
-  depends_on :macos
-
-  # Test dependency
   depends_on "googletest" => :test
-
-  # Runtime dependencies
   depends_on "java"
+  depends_on :macos
   depends_on "perl"
   depends_on "python@3.13"
   depends_on "udunits"
-
-  # Optional recommended
   depends_on "gsl" => :recommended
   depends_on "hdf5" => :recommended
   depends_on "openmotif" => :recommended
-
 
   def install
     # Set build environment
