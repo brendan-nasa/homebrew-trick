@@ -25,7 +25,7 @@ class Trick < Formula
     system "./configure", "--prefix=#{prefix}"
 
     # Build Trick
-    system "make", "-j$(sysctl -n hw.ncpu)"
+    system "make", "-j#{ENV.make_jobs}"
 
     # Install to Homebrew prefix
     system "make", "install"
