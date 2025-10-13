@@ -15,6 +15,7 @@ class Trick < Formula
   depends_on "gsl" => :recommended
   depends_on "googletest" => :test
   depends_on "openmotif" => :recommended
+  depends_on "llvm" => :build
 
   uses_from_macos "gcc"
   uses_from_macos "clang"
