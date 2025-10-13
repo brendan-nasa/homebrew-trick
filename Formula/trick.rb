@@ -4,8 +4,6 @@ class Trick < Formula
   license "NASA-1.3"
   head "https://github.com/nasa/trick.git", branch: "master"
 
-  env :std
-
   depends_on "llvm" => :build
   depends_on "maven" => :build
   depends_on "swig" => :build
