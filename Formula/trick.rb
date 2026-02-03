@@ -6,6 +6,12 @@ class Trick < Formula
   license "NASA-1.3"
   head "https://github.com/nasa/trick.git", branch: "master"
 
+  bottle do
+    root_url "https://github.com/brendan-nasa/homebrew-trick/releases/download/trick-25.0.2"
+    sha256 cellar: :any, arm64_tahoe:   "c248d289b3c02cfcdb6202f2909157b24332e98facfb5913bd613d123159e001"
+    sha256 cellar: :any, arm64_sequoia: "a156f606af1610f87d67a26b6c08916be537845515ffc304451c9d08201a4c60"
+  end
+
   depends_on "pkgconf" => :build
   depends_on arch: :arm64
   depends_on "gsl"
