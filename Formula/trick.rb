@@ -13,7 +13,8 @@ class Trick < Formula
   end
 
   depends_on "pkgconf" => :build
-  depends_on arch: :arm64
+  depends_on "bison"
+  depends_on "flex"
   depends_on "gsl"
   depends_on "hdf5"
   depends_on "libaec"
@@ -28,12 +29,15 @@ class Trick < Formula
   depends_on "python"
   depends_on "swig"
   depends_on "udunits"
+  depends_on "zlib"
+
+  uses_from_macos "libxml2"
 
   def install
     system "./configure",
-        "--with-udunits=#{Formula["udunits"].opt_prefix}",
-        "--with-hdf5=#{Formula["hdf5"].opt_prefix}",
-        "--with-gsl=#{Formula["gsl"].opt_prefix}"
+           "--with-gsl=#{Formula["gsl"].opt_prefix}",
+           "--with-hdf5=#{Formula["hdf5"].opt_prefix}",
+           "--with-udunits=#{Formula["udunits"].opt_prefix}"
     system "make", "-j#{ENV.make_jobs}"
 
     bin.install Dir["bin/*"] if File.directory?("bin")
@@ -56,10 +60,11 @@ class Trick < Formula
       s.gsub! "super/ld", "ld"
       s.gsub! %r{#{HOMEBREW_SHIMS_PATH}/[^/]+/}o, ""
     end
+
     # Fix HDF5 library paths to include libaec for libsz
     inreplace pkgshare/"makefiles/Makefile.common",
-                "HDF5_LIB := -L$(HDF5)/lib -lhdf5_hl -lhdf5 -lsz",
-                "HDF5_LIB := -L$(HDF5)/lib -L#{Formula["libaec"].opt_lib} -lhdf5_hl -lhdf5 -lsz"
+      "HDF5_LIB := -L$(HDF5)/lib -lhdf5_hl -lhdf5 -lsz",
+      "HDF5_LIB := -L$(HDF5)/lib -L#{Formula["libaec"].opt_lib} -lhdf5_hl -lhdf5 -lsz"
   end
 
   def caveats
