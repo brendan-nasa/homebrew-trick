@@ -11,6 +11,8 @@ class Trick < Formula
   depends_on "gsl"
   depends_on "hdf5"
   depends_on "libaec"
+  depends_on "libx11"
+  depends_on "libxt"
   depends_on "llvm"
   depends_on :macos
   depends_on "maven"
