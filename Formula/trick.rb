@@ -66,7 +66,7 @@ class Trick < Formula
   end
 
   test do
-    assert_path_exists bin/"trick-CP"
-    system bin/"trick-CP", "--help"
+    output = shell_output("#{bin}/trick-CP --help", 1)
+    assert_match "Trick Configuration Processor", output
   end
 end
