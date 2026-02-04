@@ -8,8 +8,9 @@ class Trick < Formula
 
   bottle do
     root_url "https://github.com/brendan-nasa/homebrew-trick/releases/download/trick-25.0.2"
-    sha256 cellar: :any, arm64_tahoe:   "c248d289b3c02cfcdb6202f2909157b24332e98facfb5913bd613d123159e001"
-    sha256 cellar: :any, arm64_sequoia: "a156f606af1610f87d67a26b6c08916be537845515ffc304451c9d08201a4c60"
+    rebuild 1
+    sha256 cellar: :any, arm64_tahoe:   "7f0568aa643fe712c570224ac6e3452a496b5931c2098b6a9cb490b4a35948bf"
+    sha256 cellar: :any, arm64_sequoia: "b13b2bf16217598ce15c9dbb8c7c23f2f5daeff03d758b3bd5c2adce2c7b52aa"
   end
 
   depends_on "pkgconf" => :build
